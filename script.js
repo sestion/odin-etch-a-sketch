@@ -5,6 +5,7 @@ function createGrid(rows, cols) {
         let col = createColumn(rows);
         container.appendChild(col);
     }
+    return container;
 }
 
 function createColumn(rows) {
@@ -24,4 +25,20 @@ function createSquare() {
     return square;
 }
 
-createGrid(16, 16);
+function changeBGColor(evt) {
+    let target = evt.target;
+
+    switch (target.className) {
+        case "square":
+            target.style.backgroundColor = "greenYellow";
+            break;
+    }
+}
+
+function init() {
+    let container = createGrid(16, 16);
+
+    container.addEventListener("mouseover", changeBGColor);
+}
+
+init();
