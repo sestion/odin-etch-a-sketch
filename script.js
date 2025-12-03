@@ -27,7 +27,7 @@ function changeBGColor(evt) {
 
     switch (target.className) {
         case "square":
-            target.style.backgroundColor = "greenYellow";
+            target.style.backgroundColor = `rgb(${getRandomInt(255)} ${getRandomInt(255)} ${getRandomInt(255)})`;
             break;
     }
 }
@@ -46,6 +46,10 @@ function removeSquares(container) {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 function init() {
