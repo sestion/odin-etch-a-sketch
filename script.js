@@ -1,11 +1,8 @@
-function createGrid(rows, cols) {
-    let container = document.querySelector(".container");
-
+function createGrid(rows, cols, parent) {
     for (let y = 0; y < cols; y++) {
         let col = createColumn(rows);
-        container.appendChild(col);
+        parent.appendChild(col);
     }
-    return container;
 }
 
 function createColumn(rows) {
@@ -35,10 +32,29 @@ function changeBGColor(evt) {
     }
 }
 
-function init() {
-    let container = createGrid(16, 16);
+function changeGridSize() {
+    let gridSize = parseInt(prompt("Enter the number of squares per side (max. 100)"));
 
+    if (gridSize <= 0 || gridSize > 100) return;
+
+    let container = document.querySelector(".container");
+    removeSquares(container);
+    createGrid(gridSize, gridSize, container);
+}
+
+function removeSquares(container) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+function init() {
+    let container = document.querySelector(".container");
+    createGrid(16, 16, container);
     container.addEventListener("mouseover", changeBGColor);
+    
+    let sizeButton = document.querySelector(".changeGridSize");
+    sizeButton.addEventListener("click", changeGridSize);
 }
 
 init();

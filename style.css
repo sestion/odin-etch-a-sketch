@@ -2,11 +2,22 @@ h1 {
     text-align: center;
 }
 
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.changeGridSize {
+    margin-bottom: 16px;
+    padding: 8px;
+}
+
 .container {
     height: 150vh;
     width: 90vw;
     margin: auto;
     display: flex;
+    border: 2px solid black;
 }
 
 .col {
